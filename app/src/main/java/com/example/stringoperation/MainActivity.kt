@@ -20,5 +20,17 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    
+    override fun onBackPressed() {
+        if(mode == 0) {
+            super.onBackPressed()
+        }
+        else
+        {
+            val fragmentTransaction = supportFragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.fragmentContainer, Fragment_A())
+            fragmentTransaction.commit()
+            mode =0
+        }
+    }
+
 }
