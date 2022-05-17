@@ -12,6 +12,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResultListener
 import com.example.stringoperation.MainActivity
 import com.example.stringoperation.R
+import java.lang.Exception
 
 class Fragment_A : Fragment() {
     private lateinit var reverseButton: Button
@@ -71,8 +72,14 @@ class Fragment_A : Fragment() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
+
         outState.putInt("mode",1)
-        outState.putString("result", result.text.toString())
+        try {
+            outState.putString("result", result.text.toString())
+        }
+        catch(e: Exception) {
+            outState.putString("result", "")
+        }
     }
     private fun passOperation(operation : String) {
         val bundle = Bundle()
